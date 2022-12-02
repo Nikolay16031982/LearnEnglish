@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import { rootReduser } from "./redusers/rootReducer";
 const store = createStore(rootReduser);
-console.log(store.getState())
+console.log(store)
 const baseURL = "http://localhost:5000/verbs";
 
 const verbs = document.querySelector(".verbs");
