@@ -1,6 +1,22 @@
-import { createStore, applyMiddleware } from "redux";
+import { createSlice, configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware } from "redux";
 import { rootReduser } from "./redusers/rootReducer";
-const store = createStore(rootReduser);
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: [],
+  reducer: {
+    rootReduser: rootReduser
+  }
+})
+export const { incremented, decremented } = counterSlice.actions
+const store = configureStore({
+  reducer: counterSlice.reducer
+})
+
+store.subscribe(() => console.log(store.getState()))
+store.dispatch(incremented())
+
 console.log(store)
 const baseURL = "http://127.0.0.1:5000/verbs";
 
